@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omar-azzam-eng.github.io/omar-azzam/sitemap.xml

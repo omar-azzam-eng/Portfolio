@@ -8,12 +8,37 @@ interface ProjectCardProps {
   readonly index: number;
 }
 
+function ProjectMetricHighlight({
+  metric,
+}: {
+  readonly metric: NonNullable<Project['metric']>;
+}) {
+  return (
+    <div
+      className="project-metric-highlight"
+      role="group"
+      aria-label={`Validation metric: ${metric.value} ${metric.label}`}
+    >
+      <span>VALIDATION</span>
+      <strong>{metric.value}</strong>
+      <small>{metric.label}</small>
+    </div>
+  );
+}
+
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const reduceMotion = useReducedMotion();
+  const metricInline = project.visual === 'ml' && project.showMlPipeline === false;
 
   return (
     <motion.article
-      className={`project-story ${index % 2 === 1 ? 'project-story-reverse' : ''}`}
+      className={[
+        'project-story',
+        index % 2 === 1 && !metricInline ? 'project-story-reverse' : '',
+        metricInline ? 'project-story-inline-metric' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={VIEWPORT_DEEP}
@@ -46,8 +71,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
           </ul>
         </div>
+
+        {metricInline && project.metric ? <ProjectMetricHighlight metric={project.metric} /> : null}
       </div>
-      <ProjectVisual project={project} />
+      {!metricInline ? <ProjectVisual project={project} /> : null}
     </motion.article>
   );
 }

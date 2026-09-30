@@ -22,6 +22,8 @@ export interface Project {
   readonly points: readonly string[];
   readonly stack: readonly string[];
   readonly visual: ProjectVisual;
+  /** When false with `visual: 'ml'`, only the metric (e.g. accuracy) is shown—no pipeline animation. */
+  readonly showMlPipeline?: boolean;
   readonly metric?: {
     readonly value: string;
     readonly label: string;

@@ -1,16 +1,20 @@
-import type {
-  Education,
-  Experience,
-  Language,
-  Project,
-  SkillGroup,
-} from '../types/portfolio';
+import type { Education, Experience, Language, Project, SkillGroup } from '../types/portfolio';
 
 export const skillGroups: readonly SkillGroup[] = [
   {
     title: 'Backend Core',
     description: 'The application layer — APIs, auth, runtime, validation, and real-time behavior.',
-    skills: ['Node.js', 'TypeScript', 'JavaScript', 'REST', 'NestJS', 'Express', 'JWT', 'Socket', 'Zod'],
+    skills: [
+      'Node.js',
+      'TypeScript',
+      'JavaScript',
+      'REST',
+      'NestJS',
+      'Express',
+      'JWT',
+      'Socket',
+      'Zod',
+    ],
   },
   {
     title: 'Data Layer',
@@ -20,7 +24,15 @@ export const skillGroups: readonly SkillGroup[] = [
   {
     title: 'Data + ML',
     description: 'Analysis, visualization, classical machine learning, and deep-learning tooling.',
-    skills: ['Python', 'Data analysis', 'Pandas', 'Matplotlib', 'Seaborn', 'Scikit-learn', 'PyTorch'],
+    skills: [
+      'Python',
+      'Data analysis',
+      'Pandas',
+      'Matplotlib',
+      'Seaborn',
+      'Scikit-learn',
+      'PyTorch',
+    ],
   },
   {
     title: 'Engineering',
@@ -76,10 +88,30 @@ export const projects: readonly Project[] = [
     type: 'AI / Machine Learning',
     description:
       'A medical-image classification project built in Python to predict lung cancer types from CT scan imagery.',
-    points: ['Built an AI classification model for CT scan images.', 'Achieved a reported 97% accuracy rate.'],
+    points: [
+      'Built an AI classification model for CT scan images.',
+      'Achieved a reported 97% accuracy rate.',
+    ],
     stack: ['Python', 'PyTorch', 'Scikit-learn', 'Data Analysis'],
     visual: 'ml',
     metric: { value: '97%', label: 'reported accuracy' },
+  },
+  {
+    index: '03',
+    title: 'Book Recommendation System',
+    period: '05/2026 — 08/2026',
+    type: 'AI / Machine Learning',
+    description:
+      'An advanced deep learning recommendation engine built in Python using a Hybrid Neural Matrix Factorization (NeuMF) architecture to deliver personalized book suggestions by combining collaborative filtering with rich content features.',
+    points: [
+      'Focus on Neural Architecture.',
+      'Focus on Solving Limitations.',
+      'Focus on End-to-End ML Pipeline.',
+    ],
+    stack: ['Python', 'PyTorch', 'Scikit-learn', 'Data Analysis'],
+    visual: 'ml',
+    showMlPipeline: false,
+    metric: { value: '71.92%', label: 'test accuracy' },
   },
 ];
 

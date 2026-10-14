@@ -35,10 +35,16 @@ function MachineLearningVisual({ project }: { readonly project: Project }) {
   const activeLabel = ML_STAGES.find((stage) => stage.id === activeStage)?.label ?? 'IMAGE';
 
   return (
-    <div className="project-visual ml-visual" role="img" aria-label="Animated machine learning pipeline visualization">
+    <div
+      className="project-visual ml-visual"
+      role="img"
+      aria-label="Animated machine learning pipeline visualization"
+    >
       <div className="ml-topline">
         <span>MODEL PIPELINE</span>
-        <span className="ml-live-status"><i aria-hidden="true" /> PROCESSING · {activeLabel}</span>
+        <span className="ml-live-status">
+          <i aria-hidden="true" /> PROCESSING · {activeLabel}
+        </span>
       </div>
 
       <div className="scan-frame" aria-hidden="true">
@@ -50,7 +56,9 @@ function MachineLearningVisual({ project }: { readonly project: Project }) {
           transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
         />
         <div className="ml-activity">
-          {Array.from({ length: 12 }, (_, index) => <i key={index} style={{ '--bar-index': index } as CSSProperties} />)}
+          {Array.from({ length: 12 }, (_, index) => (
+            <i key={index} style={{ '--bar-index': index } as CSSProperties} />
+          ))}
         </div>
       </div>
 
@@ -59,16 +67,21 @@ function MachineLearningVisual({ project }: { readonly project: Project }) {
         <strong>{project.metric?.value}</strong>
         <small>{project.metric?.label}</small>
         <div className="ml-runtime" aria-hidden="true">
-          <span>STATUS</span><b>RUNNING</b>
-          <span>INPUT</span><b>CT SCAN</b>
-          <span>OUTPUT</span><b>CLASSIFICATION</b>
+          <span>STATUS</span>
+          <b>RUNNING</b>
+          <span>INPUT</span>
+          <b>CT SCAN</b>
+          <span>OUTPUT</span>
+          <b>CLASSIFICATION</b>
         </div>
       </div>
 
       <div className="ml-pipeline" aria-hidden="true">
         {ML_STAGES.map((stage, index) => (
           <div className="ml-stage-wrap" key={stage.id}>
-            <span className={activeStage === stage.id ? 'ml-stage is-active' : 'ml-stage'}>{stage.label}</span>
+            <span className={activeStage === stage.id ? 'ml-stage is-active' : 'ml-stage'}>
+              {stage.label}
+            </span>
             {index < ML_STAGES.length - 1 && <i>→</i>}
           </div>
         ))}
@@ -79,7 +92,11 @@ function MachineLearningVisual({ project }: { readonly project: Project }) {
 
 function BackendVisual() {
   return (
-    <div className="project-visual backend-visual simple-backend-visual" role="img" aria-label="PharmaLink backend system flow">
+    <div
+      className="project-visual backend-visual simple-backend-visual"
+      role="img"
+      aria-label="PharmaLink backend system flow"
+    >
       <div className="backend-topline">
         <span>BACKEND SYSTEM</span>
         <span className="backend-simple-status">SCALABLE · REAL-TIME</span>
@@ -127,5 +144,5 @@ function BackendVisual() {
 
 export function ProjectVisual({ project }: ProjectVisualProps) {
   if (project.visual === 'ml') return <MachineLearningVisual project={project} />;
-  return <BackendVisual />;
+  if (project.visual === 'system') return <BackendVisual />;
 }

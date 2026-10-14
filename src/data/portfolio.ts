@@ -110,8 +110,26 @@ export const projects: readonly Project[] = [
     ],
     stack: ['Python', 'PyTorch', 'Scikit-learn', 'Data Analysis'],
     visual: 'ml',
+    layout: 'full-width',
     showMlPipeline: false,
     metric: { value: '71.92%', label: 'test accuracy' },
+  },
+  {
+    index: '04',
+    title: 'NestJs boiler plate',
+    period: '10/2026 — 10/2026',
+    type: 'Backend System',
+    description:
+      'A production-oriented NestJS backend boilerplate built with TypeScript, PostgreSQL, TypeORM, and JWT authentication. Designed with a modular architecture, role-based access control, input validation, centralized error handling, and automated testing to provide a reliable foundation for scalable REST APIs.',
+    points: [
+      'Focus on Modular Architecture and Maintainability.',
+      'Focus on Authentication, JWT Security, and Role-Based Access Control.',
+      'Focus on Database Integrity, Error Handling, and Automated Testing.',
+    ],
+    stack: ['NestJS', 'TypeScript', 'PostgreSQL', 'TypeORM', 'JWT', 'Jest'],
+    visual: 'backend',
+    layout: 'full-width',
+    showMlPipeline: false,
   },
 ];
 

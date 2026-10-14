@@ -423,6 +423,53 @@ button {
 .project-story-reverse .project-visual {
   order: 1;
 }
+/* Default two-column layout */
+.project-story-split {
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(48px, 7vw, 110px);
+}
+
+/* Visual on the right */
+.project-story-visual-right {
+  direction: ltr;
+}
+
+/* Visual on the left */
+.project-story-visual-left {
+  direction: rtl;
+}
+
+.project-story-visual-left > *,
+.project-story-visual-right > * {
+  direction: ltr;
+}
+
+/* Full-width project */
+.project-story-full-width {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.project-story-full-width .project-copy {
+  width: 100%;
+  max-width: none;
+}
+
+.project-story-full-width .project-visual {
+  display: none;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .project-story-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-story-visual-left,
+  .project-story-visual-right {
+    direction: ltr;
+  }
+}
 .project-topline {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -1336,12 +1383,7 @@ button {
 .hero-copy {
   position: relative;
 }
-.hero-overline::before {
-  content: '●';
-  font-size: 0.52rem;
-  margin-right: 10px;
-  vertical-align: 1px;
-}
+
 .hero h1 span {
   position: relative;
 }
@@ -1655,6 +1697,21 @@ button {
   font: 500 0.56rem/1.45 'DM Mono';
   letter-spacing: 0.11em;
   text-transform: uppercase;
+}
+/* Make the NestJS project span the full project-card width */
+.project-story-full-width {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.project-story-full-width .project-copy {
+  width: 100%;
+  max-width: none;
+}
+
+/* Hide the visual column only for this project */
+.project-story-full-width .project-visual {
+  display: none;
 }
 .project-narrative .project-points,
 .project-stack-block .tags {

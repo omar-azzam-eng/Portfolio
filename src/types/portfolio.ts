@@ -11,8 +11,11 @@ export interface Experience {
   readonly points: readonly string[];
 }
 
-export type ProjectVisual = 'system' | 'ml';
+export type ProjectVisual = 'system' | 'ml' | 'backend';
 
+export type ProjectLayout = 'split' | 'full-width';
+
+export type VisualSide = 'left' | 'right';
 export interface Project {
   readonly index: string;
   readonly title: string;
@@ -22,6 +25,8 @@ export interface Project {
   readonly points: readonly string[];
   readonly stack: readonly string[];
   readonly visual: ProjectVisual;
+  readonly layout?: ProjectLayout;
+  readonly visualSide?: VisualSide;
   /** When false with `visual: 'ml'`, only the metric (e.g. accuracy) is shown—no pipeline animation. */
   readonly showMlPipeline?: boolean;
   readonly metric?: {

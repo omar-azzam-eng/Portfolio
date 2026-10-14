@@ -8,11 +8,7 @@ interface ProjectCardProps {
   readonly index: number;
 }
 
-function ProjectMetricHighlight({
-  metric,
-}: {
-  readonly metric: NonNullable<Project['metric']>;
-}) {
+function ProjectMetricHighlight({ metric }: { readonly metric: NonNullable<Project['metric']> }) {
   return (
     <div
       className="project-metric-highlight"
@@ -26,24 +22,20 @@ function ProjectMetricHighlight({
   );
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const reduceMotion = useReducedMotion();
+export function ProjectCard({ project }: ProjectCardProps) {
   const metricInline = project.visual === 'ml' && project.showMlPipeline === false;
+  const layout = project.layout ?? 'split';
+  const visualSide = project.visualSide ?? 'right';
 
+  const projectClasses = [
+    'project-story',
+    `project-story-${layout}`,
+    layout === 'split' ? `project-story-visual-${visualSide}` : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
   return (
-    <motion.article
-      className={[
-        'project-story',
-        index % 2 === 1 && !metricInline ? 'project-story-reverse' : '',
-        metricInline ? 'project-story-inline-metric' : '',
-      ]
-        .filter(Boolean)
-        .join(' ')}
-      initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={VIEWPORT_DEEP}
-      transition={REVEAL_TRANSITION}
-    >
+    <motion.article className={projectClasses}>
       <div className="project-copy">
         <div className="project-topline">
           <span>{project.index}</span>
@@ -61,14 +53,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="project-narrative">
           <p className="project-label">Engineering notes</p>
           <ul className="project-points">
-            {project.points.map((point) => <li key={point}>{point}</li>)}
+            {project.points.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
           </ul>
         </div>
 
         <div className="project-stack-block">
           <p className="project-label">Stack</p>
           <ul className="tags" aria-label={`${project.title} technologies`}>
-            {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
+            {project.stack.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
           </ul>
         </div>
 

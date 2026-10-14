@@ -18,7 +18,7 @@ export function HeroSection() {
         animate={reduceMotion ? undefined : { opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <span className="status-dot" aria-hidden="true" />
+        <span aria-hidden="true" />
         BACKEND DEVELOPER · AI ENGINEERING
       </motion.div>
 

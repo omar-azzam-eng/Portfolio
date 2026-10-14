@@ -56,12 +56,16 @@ export const experiences: readonly Experience[] = [
     role: 'Teacher',
     company: 'German Board',
     location: 'As-Suwayda, Syria',
-    period: '01/2025 — 06/2025',
+    period: '01/2025 — 01/2026',
     points: [
       'Taught a comprehensive course on applying AI in daily life and design.',
       'Improved student AI proficiency scores by 25% within one month.',
       'Increased student engagement by 30% through two project-based learning units.',
     ],
+    certificate: {
+      title: 'Teaching Certificate',
+      url: `${import.meta.env.BASE_URL}certificates/german-board-teaching.jpg`,
+    },
   },
 ];
 

@@ -18,7 +18,9 @@ export function ExperienceItem({ experience, index }: ExperienceItemProps) {
       viewport={VIEWPORT_ONCE}
       transition={{ delay: reduceMotion ? 0 : index * 0.08 }}
     >
-      <div className="timeline-node" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span></div>
+      <div className="timeline-node" aria-hidden="true">
+        <span>{String(index + 1).padStart(2, '0')}</span>
+      </div>
       <div className="timeline-meta">
         <time>{experience.period}</time>
         <span>{experience.location}</span>
@@ -26,9 +28,24 @@ export function ExperienceItem({ experience, index }: ExperienceItemProps) {
       <div className="timeline-content">
         <p className="company">{experience.company}</p>
         <h3>{experience.role}</h3>
+
         <ul>
-          {experience.points.map((point) => <li key={point}>{point}</li>)}
+          {experience.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
         </ul>
+
+        {experience.certificate && (
+          <a
+            className="certificate-link"
+            href={experience.certificate.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${experience.certificate.title}`}
+          >
+            View Teaching Certificate ↗
+          </a>
+        )}
       </div>
     </motion.article>
   );

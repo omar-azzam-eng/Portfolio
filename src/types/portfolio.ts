@@ -9,6 +9,10 @@ export interface Experience {
   readonly location: string;
   readonly period: string;
   readonly points: readonly string[];
+  readonly certificate?: {
+    readonly title: string;
+    readonly url: string;
+  };
 }
 
 export type ProjectVisual = 'system' | 'ml' | 'backend';

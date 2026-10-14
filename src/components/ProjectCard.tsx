@@ -1,5 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { REVEAL_TRANSITION, VIEWPORT_DEEP } from '../constants/motion';
+import { motion } from 'framer-motion';
 import type { Project } from '../types/portfolio';
 import { ProjectVisual } from './ProjectVisual';
 
